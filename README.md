@@ -55,7 +55,7 @@ color_score = 1 - (normalized L2 distance in LAB space)
 <br>
 
 **✅ Parameter Values**<br>
-In order to minimize the number of parameters to train (because the base model was too small), I fixed the parameter values for each makeup region instead of learning them.
+In order to minimize the number of parameters to train (because the base model was too small), we fixed the parameter values for each makeup region instead of learning them.
 ```
 LIP_FULL_BASIC : { "alpha": 190, "sigma": 70, "gamma": 0, "split": 0 }
 ```
