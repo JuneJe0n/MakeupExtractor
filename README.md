@@ -1,21 +1,37 @@
 #  Fine-tuning VLMs via GRPO for Automatic Makeup Extraction
-📍 This is a project done during my internship at B*Factory | Jun 2025 - Aug 2025
+**📍 This is a project done during my internship at B*Factory | Jun 2025 - Aug 2025**
 
-This repository contains the implementation and experiments for automatic makeup extraction using Vision-Language Models (VLMs).
+This project aims to automatically extract makeup looks from company photoshoots and allow customers to easily try them on their own faces using LViton’s virtual try-on system. <br>
 
-The ultimate goal of this project is to enable customers to easily try on the exact makeup looks from a company’s photoshoots directly on their own faces.
-By automatically extracting the color and style information from editorial makeup images and applying them to personal selfies via LViton, 
-we aim to bridge the gap between inspiration and personalization.
+The core idea is to fine-tune a Vision-Language Model (VLM) via GRPO (Generative Reinforcement Policy Optimization) to predict makeup attributes (lip, blush, eyeshadow colors) in a structured JSON format.<br>
+
+Since a complete makeup look involves many parameters, the training was conducted progressively: starting with lips only (simpler) and later extending to lips, blush, and eyeshadow.
 
 
-## 🚀 Project Overview
-### Goal
-- Extract accurate makeup information from beauty photoshoots.
-- Allow customers to instantly try on these makeup looks on their own faces with LViton’s virtual try-on system
+## ⚙️ Experimental Settings
+### Data
+- Dataset size: ~10K
+- Sources: Combination of Ameli makeup photoshoots + FFHQ faces
 
-### Approach
-- Fine-tune a VLM using GRPO (Generative Reinforcement Policy Optimization)
-- Continual training: <br>
-    - **Phase 1** → Lips only (since the base model was relatively small and a full makeup look contains too many attributes to learn at once)
-    - **Phase 2** → Lips + Blush + Eyeshadow
-- Custom reward function balancing format correctness and color accuracy
+### Base Model
+- Qwen/Qwen2.5-VL-7B-Instruct
+
+
+### Reward
+- Self defined.. Detailed description below
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
