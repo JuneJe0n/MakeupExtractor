@@ -33,7 +33,7 @@ Reward = 0.3 * Format Reward + 1.0 * Accuracy Reward
   - 1.0 if output matches required format (tags, valid JSON, schema)
   - 0.2 otherwise
 - **Accuracy Reward**
-  - Defined differently depending on task (see below)
+  - Defined differently depending on task (see below) <br><br>
 
 
 ## 💄 Lips Only
@@ -60,7 +60,6 @@ In order to minimize the number of parameters to train (because the base model w
 LIP_FULL_BASIC : { "alpha": 190, "sigma": 70, "gamma": 0, "split": 0 }
 ```
 
-
 ### Results
 <img src='./assets/lips_0.png' width=580><br>
 <img src='./assets/lips_1.png' width=580><br><br>
@@ -69,8 +68,40 @@ LIP_FULL_BASIC : { "alpha": 190, "sigma": 70, "gamma": 0, "split": 0 }
 <img src='./assets/lips_2.png' width=580><br>
 <img src='./assets/lips_3.png' width=580><br><br>
 
+
+
 ## 🎨 Lips, Blush, Eyeshadow
 ### Reward
+
+**✅ Accuracy Reward (F1-based)**<br>
+For the accuracy reward, we first make a **similarity matrix S**:
+```
+S[i,j] = 0.7 * color_score + 0.3 * shape_score
+```
+- i : index for GT
+- j : index for prediction
+- **color_score** = 1 - (normalized L2 distance in LAB space)
+- **shape_score** = 1.0 if same, 0.2 if different<br>
+
+
+Based on the similarity matrix, we calculate the F1 score (=Accuracy Reward).
+```
+F1 = (2 * precision * recall) / (precision + recall)
+```
+- precision = # matched / len(predictions)
+- recall = # matched / len(GT)
+- Matched if similarity score ≥ τ (=0.6)<br><br>
+
+
+**✅ Parameter Values**<br>
+In order to minimize the number of parameters to train (because the base model was too small), we fixed the parameter values for each makeup region instead of learning them.
+```
+LIP_FULL_BASIC : { "alpha": 190, "sigma": 70, "gamma": 0, "split": 0 }
+BLUSHER_CENTER_WIDE_BASIC : { "alpha": 80, "sigma": 200, "gamma": 0, "split": 0 }
+EYESHADOW_OVEREYE_FULL_BASIC : { "alpha": 180, "sigma": 100, "gamma": 50, "split": 0 }
+```
+
+
 ### Results
 <img src='./assets/full_0.png' width=580><br><br>
 
