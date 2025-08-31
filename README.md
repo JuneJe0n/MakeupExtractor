@@ -1,10 +1,10 @@
 #  Fine-tuning VLMs via GRPO for Automatic Makeup Extraction
 🌎 **This is a project done during my internship at [B*Factory](https://www.linkedin.com/company/bfactory-ai/posts/?feedView=all) | Jun 2025 - Aug 2025**<br>
-📍 Special thanks to senior developers **Adrià Arrufat** and **Saad Imran** for their support and guidance throughout this project.
+📍 Special thanks to senior developers **Adrià Arrufat** and **Saad Imran** for their support and guidance throughout this project. <br><br>
 
 This project aims to automatically extract makeup looks from company photoshoots and allow customers to easily try them on their own faces using LViton’s virtual try-on system. <br>
 
-The core idea is to fine-tune a Vision-Language Model (VLM) via [GRPO (Generative Reinforcement Policy Optimization)](https://arxiv.org/abs/2402.03300) to predict makeup attributes (lip, blush, eyeshadow colors) in a structured JSON format.  e.g.: 
+The core idea is to fine-tune a Vision-Language Model (VLM) via [GRPO (Generative Reinforcement Policy Optimization)](https://arxiv.org/abs/2402.03300) to predict makeup attributes (lip, blush, eyeshadow colors) of a makeup picture in a structured JSON format.  e.g.: 
 ```
 [
   {"shape": "LIP_FULL_BASIC", "color": "#DC3813"},
@@ -14,7 +14,8 @@ The core idea is to fine-tune a Vision-Language Model (VLM) via [GRPO (Generativ
 ```
 <br>
 
-Since a complete makeup look involves many parameters, the training was conducted progressively: starting with **lips only** (simpler) and later extending to **lips, blush, and eyeshadow.** <br><br>
+Since a complete makeup look involves many parameters, the training was conducted progressively: <br>
+Starting with **lips only** (simpler) and later extending to **lips, blush, and eyeshadow.** <br><br>
 
 
 
@@ -33,6 +34,8 @@ Since a complete makeup look involves many parameters, the training was conducte
 ### Results
 <img src='./assets/lips_0.png' width=580><br>
 <img src='./assets/lips_1.png' width=580><br><br>
+
+### Results on actual company photoshoots
 <img src='./assets/lips_2.png' width=580><br>
 <img src='./assets/lips_3.png' width=580><br><br>
 
@@ -40,6 +43,8 @@ Since a complete makeup look involves many parameters, the training was conducte
 ### Reward
 ### Results
 <img src='./assets/full_0.png' width=580><br><br>
+
+### Results on actual company photoshoots
 <img src='./assets/full_1.png' width=580>
 
 
