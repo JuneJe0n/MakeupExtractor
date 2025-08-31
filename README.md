@@ -26,7 +26,12 @@ Starting with **lips only** (simpler) ➡️ and later extending to **lips, blus
 ### Base Model
 - [Qwen2.5-VL-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct)
 ### Reward
-- Self defined. Detailed description below <br><br>
+Reward = 0.3 * Format Reward + 1.0 * Accuracy Reward
+- **Format Reward**
+  - 1.0 if output matches required format (tags, valid JSON, schema)
+  - 0.2 otherwise
+- **Accuracy Reward**
+  - Defined differently depending on task (see below)
 
 
 ## 💄 Lips Only
