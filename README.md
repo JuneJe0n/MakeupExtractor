@@ -36,6 +36,22 @@ Reward = 0.3 * Format Reward + 1.0 * Accuracy Reward
 
 ## 💄 Lips Only
 ### Reward
+**Color score <br>**
+Originally, the color score was defined as L1 distance in RGB space.
+  - Problem: this made the model predict grayish colors (R ≈ G ≈ B).
+  - Reason: gray is a “safe” prediction since its L1 distance to most colors is relatively small.
+To fix this, the color score was redefined in LAB space, which is closer to human perception of color differences.
+Final definition: 
+```
+color_score = 1 - (normalized L2 distance in LAB space)
+```
+
+**Parameter Values**
+o minimize the number of parameters to train (because the base model was too small), I fixed the parameter values for each makeup region instead of learning them.
+LIP_FULL_BASIC : { "alpha": 190, "sigma": 70, "gamma": 0, "split": 0 }
+
+
+
 ### Results
 <img src='./assets/lips_0.png' width=580><br>
 <img src='./assets/lips_1.png' width=580><br><br>
