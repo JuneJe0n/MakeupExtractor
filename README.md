@@ -26,7 +26,9 @@ Starting with **lips only** (simpler) ➡️ and later extending to **lips, blus
 ### Base Model
 - [Qwen2.5-VL-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct)
 ### Reward
+```
 Reward = 0.3 * Format Reward + 1.0 * Accuracy Reward
+```
 - **Format Reward**
   - 1.0 if output matches required format (tags, valid JSON, schema)
   - 0.2 otherwise
@@ -36,20 +38,27 @@ Reward = 0.3 * Format Reward + 1.0 * Accuracy Reward
 
 ## 💄 Lips Only
 ### Reward
-**Color score <br>**
-Originally, the color score was defined as L1 distance in RGB space.
-  - Problem: this made the model predict grayish colors (R ≈ G ≈ B).
-  - Reason: gray is a “safe” prediction since its L1 distance to most colors is relatively small.
-To fix this, the color score was redefined in LAB space, which is closer to human perception of color differences.
-Final definition: 
+**◼︎ Color score <br>**
+Originally, the color score was defined as 
+```
+color_score = 1 - (normalized L1 distance in RGB space)
+```
+However, this made the model's predictions saturate to grayish colors (R ≈ G ≈ B).
+This was because gray is a “safe” prediction since its L1 distance to most colors in RGB space is relatively small.<br>
+
+To fix this, the color score was redefined in LAB space, which is closer to human perception of color differences.<br>
+
+➡️ Final definition of color score: 
 ```
 color_score = 1 - (normalized L2 distance in LAB space)
 ```
+<br>
 
-**Parameter Values**
-o minimize the number of parameters to train (because the base model was too small), I fixed the parameter values for each makeup region instead of learning them.
+**◼︎  Parameter Values**<br>
+In order to minimize the number of parameters to train (because the base model was too small), I fixed the parameter values for each makeup region instead of learning them.
+```
 LIP_FULL_BASIC : { "alpha": 190, "sigma": 70, "gamma": 0, "split": 0 }
-
+```
 
 
 ### Results
