@@ -59,6 +59,7 @@ In order to minimize the number of parameters to train (because the base model w
 ```
 LIP_FULL_BASIC : { "alpha": 190, "sigma": 70, "gamma": 0, "split": 0 }
 ```
+<br>
 
 ### Results
 <img src='./assets/lips_0.png' width=580><br>
@@ -100,7 +101,7 @@ LIP_FULL_BASIC : { "alpha": 190, "sigma": 70, "gamma": 0, "split": 0 }
 BLUSHER_CENTER_WIDE_BASIC : { "alpha": 80, "sigma": 200, "gamma": 0, "split": 0 }
 EYESHADOW_OVEREYE_FULL_BASIC : { "alpha": 180, "sigma": 100, "gamma": 50, "split": 0 }
 ```
-
+<br>
 
 ### Results
 <img src='./assets/full_0.png' width=580><br><br>
